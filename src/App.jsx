@@ -842,10 +842,10 @@ export default function ApexGlobalLandingPage() {
         </AnimatePresence>
       </header>
 
-      <section className="relative mx-auto min-h-[calc(100vh-86px)] max-w-[92rem] px-6 pb-10 pt-0 lg:px-8 lg:pb-12">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:items-center">
+      <section className="relative mx-auto min-h-[calc(100svh-86px)] max-w-[96rem] px-6 pb-10 pt-6 lg:px-8 lg:pb-10 lg:pt-0">
+        <div className="grid items-start gap-10 lg:min-h-[calc(100svh-150px)] lg:grid-cols-2 lg:items-center lg:gap-12">
           <div className="lg:-mt-3">
-            <h1 className="mt-1 text-4xl font-semibold leading-tight md:text-6xl">
+            <h1 className="mt-1 text-4xl font-semibold leading-[1.08] md:text-6xl xl:text-7xl 2xl:text-[5.25rem]">
               <span className="block">We keep the</span>
               <span className="block">workplace</span>
               <span className="block">
@@ -863,7 +863,7 @@ export default function ApexGlobalLandingPage() {
               </span>
             </h1>
 
-            <p className={`mt-3 max-w-lg text-base md:text-lg ${theme === "dark" ? "text-slate-300" : "text-slate-700"}`}>
+            <p className={`mt-5 max-w-xl text-base md:text-lg xl:text-xl xl:leading-relaxed ${theme === "dark" ? "text-slate-300" : "text-slate-700"}`}>
               Apex Global manages the operational pressure behind offices and companies: repairs, urgent dispatch, and facility logistics that keep business running.
             </p>
 
@@ -900,7 +900,7 @@ export default function ApexGlobalLandingPage() {
               </motion.a>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-y-4 gap-x-1 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-y-4 gap-x-2 sm:grid-cols-4">
               {[
                 ["24/7", "Response mindset"],
                 ["1 Hub", "All requests"],
@@ -909,7 +909,7 @@ export default function ApexGlobalLandingPage() {
               ].map(([num, label]) => (
                 <div
                   key={num}
-                  className={`group relative mx-auto flex aspect-square w-full max-w-[98px] flex-col items-center justify-center overflow-hidden rounded-xl border text-center transition ${
+                  className={`group relative mx-auto flex aspect-square w-full max-w-[112px] flex-col items-center justify-center overflow-hidden rounded-xl border text-center transition ${
                     theme === "dark"
                       ? "border-slate-300/30 bg-gradient-to-b from-slate-500/35 via-slate-400/25 to-slate-500/35"
                       : "border-slate-300/90 bg-white/65 hover:border-slate-300 hover:bg-gradient-to-b hover:from-slate-100 hover:via-slate-200 hover:to-slate-300 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_10px_20px_-16px_rgba(71,85,105,0.65)]"
@@ -943,13 +943,12 @@ export default function ApexGlobalLandingPage() {
           </div>
 
           <div className="relative mt-0 flex justify-center lg:-mt-1 lg:translate-x-6">
-            <div className="relative w-full max-w-[615px]">
+            <div className="relative w-full max-w-[740px]">
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative h-[485px] w-full overflow-hidden rounded-[2.25rem] border border-white/15 shadow-[0_40px_90px_-45px_rgba(15,23,42,0.55)]"
-                style={{
+                className="relative h-[360px] w-full overflow-hidden rounded-[2.25rem] border border-white/15 shadow-[0_40px_90px_-45px_rgba(15,23,42,0.55)] sm:h-[460px] lg:h-[clamp(480px,65svh,760px)]"
                   WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 24%, black 100%)",
                   maskImage: "linear-gradient(to right, transparent 0%, black 24%, black 100%)",
                 }}
