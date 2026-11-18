@@ -1,3 +1,88 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+APEX GLOBAL — FULLSCREEN HERO
+
+@media (min-width: 1024px) {
+  #root > div > div.relative.z-10 > section:first-of-type {
+    min-height: calc(100svh - 86px);
+    max-width: 1600px;
+    padding: 20px 36px 35px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Two-column hero layout */
+  #root > div > div.relative.z-10 > section:first-of-type > div.grid {
+    width: 100%;
+    min-height: calc(100svh - 155px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* Main heading */
+  #root > div > div.relative.z-10 > section:first-of-type h1 {
+    font-size: clamp(64px, 5.2vw, 94px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  /* Description */
+  #root > div > div.relative.z-10 > section:first-of-type h1 + p {
+    max-width: 640px;
+    font-size: clamp(18px, 1.35vw, 22px);
+    line-height: 1.6;
+    margin-top: 24px;
+  }
+
+  /* Statistics cards */
+  #root > div > div.relative.z-10 > section:first-of-type .grid.grid-cols-2 {
+    margin-top: 32px;
+    gap: 14px;
+  }
+
+  /* Right image column */
+  #root > div > div.relative.z-10 > section:first-of-type > div.grid > div:nth-child(2) {
+    width: 100%;
+    transform: none;
+  }
+
+  #root > div > div.relative.z-10 > section:first-of-type > div.grid > div:nth-child(2) > div {
+    max-width: 740px;
+    width: 100%;
+  }
+
+  /* Image fills available screen height */
+  #root > div > div.relative.z-10 > section:first-of-type > div.grid > div:nth-child(2) > div > div:first-child {
+    height: clamp(480px, 68svh, 780px);
+    width: 100%;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  #root > div > div.relative.z-10 > section:first-of-type h1 {
+    font-size: 60px;
+  }
+
+  #root > div > div.relative.z-10 > section:first-of-type > div.grid {
+    gap: 24px;
+  }
+}
+
+/* Mobile remains responsive */
+@media (max-width: 1023px) {
+  #root > div > div.relative.z-10 > section:first-of-type {
+    min-height: auto;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  #root > div > div.relative.z-10 > section:first-of-type > div.grid > div:nth-child(2) > div > div:first-child {
+    height: clamp(300px, 55vw, 470px);
+  }
+}
