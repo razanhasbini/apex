@@ -1,16 +1,33 @@
-# React + Vite
+# Apex Global landing page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site for a facility-management company: a React 19 + Vite single-page site (Tailwind, Framer Motion) with a small Express endpoint that emails contact-form inquiries through [Resend](https://resend.com).
 
-Currently, two official plugins are available:
+## Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `src/App.jsx`: page sections and the contact form
+- `server.js`: `POST /api/contact` (validates input, emails the inquiry)
+- `contact.js`: input validation and HTML escaping, kept dependency-free so it is unit-testable
 
-## React Compiler
+## Running locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+cp .env.example .env      # add your own Resend API key and addresses
+npm run server            # contact API on :5000
+npm run dev               # site on :5173
+npm test                  # contact validation tests (node:test)
+```
 
-## Expanding the ESLint configuration
+| Variable | Where | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | server | Resend API key (required; never exposed to the browser) |
+| `CONTACT_TO`, `CONTACT_FROM` | server | recipient and verified sender (required) |
+| `ALLOWED_ORIGIN` | server | comma-separated origins allowed by CORS |
+| `VITE_CONTACT_API_URL` | build | base URL of the contact API used by the form |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Security
+
+- The API key comes from the environment; the server refuses to start without it.
+- All form fields are length-limited and HTML-escaped before being placed in the email, so a submission cannot inject markup or links into the message.
+- CORS is restricted to configured origins and request bodies are capped at 20 KB.
+- There is no rate limiting yet; add one (for example `express-rate-limit`) before relying on the endpoint publicly.
