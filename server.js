@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const resend = new Resend("re_Zt4UuCdi_2y3rynwQGBkaqStrggZ3Qvh9");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.post("/api/contact", async (req, res) => {
   try {
