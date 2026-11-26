@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-APEX GLOBAL — FULLSCREEN HERO
+/* APEX GLOBAL — FULLSCREEN HERO */
 
 @media (min-width: 1024px) {
   #root > div > div.relative.z-10 > section:first-of-type {
