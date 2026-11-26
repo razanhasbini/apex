@@ -775,7 +775,7 @@ export default function ApexGlobalLandingPage() {
       <div className="fixed left-0 right-0 top-0 z-50 h-1 bg-white/10">
         <motion.div className="h-full bg-sky-500 origin-left" style={{ scaleX: scrollYProgress }} />
       </div>
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-x-clip">
       <header
         className={`sticky top-0 z-40 backdrop-blur-xl ${
           theme === "dark" ? "bg-inherit/70" : "bg-[#f3f8fe]/80"
@@ -842,7 +842,23 @@ export default function ApexGlobalLandingPage() {
         </AnimatePresence>
       </header>
 
-      <section className="relative mx-auto min-h-[calc(100svh-86px)] max-w-[96rem] px-6 pb-10 pt-6 lg:px-8 lg:pb-10 lg:pt-0">
+      <section className="relative isolate mx-auto min-h-[calc(100svh-86px)] max-w-[96rem] px-6 pb-10 pt-6 lg:px-8 lg:pb-10 lg:pt-0">
+        <motion.div
+          aria-hidden="true"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="pointer-events-none absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2"
+        >
+          <img src={topImage} alt="" className="h-full w-full object-cover object-[70%_center]" />
+          <div
+            className={`absolute inset-0 ${
+              theme === "dark"
+                ? "bg-[#0d1b2a]/80 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#0d1b2a] lg:via-[#0d1b2a]/85 lg:to-[#0d1b2a]/10"
+                : "bg-[#f7fbff]/80 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#f7fbff] lg:via-[#f7fbff]/85 lg:to-[#f7fbff]/10"
+            }`}
+          />
+        </motion.div>
         <div className="grid items-start gap-10 lg:min-h-[calc(100svh-150px)] lg:grid-cols-2 lg:items-center lg:gap-12">
           <div className="lg:-mt-3">
             <h1 className="mt-1 text-4xl font-semibold leading-[1.08] md:text-6xl xl:text-7xl 2xl:text-[5.25rem]">
@@ -942,34 +958,6 @@ export default function ApexGlobalLandingPage() {
             </div>
           </div>
 
-          <div className="relative mt-0 flex justify-center lg:-mt-1 lg:translate-x-6">
-            <div className="relative w-full max-w-[740px]">
-              <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative h-[360px] w-full overflow-hidden rounded-[2.25rem] border border-white/15 shadow-[0_40px_90px_-45px_rgba(15,23,42,0.55)] sm:h-[460px] lg:h-[clamp(480px,65svh,760px)]"
-                style={{
-                  WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 24%, black 100%)",
-                  maskImage: "linear-gradient(to right, transparent 0%, black 24%, black 100%)",
-                }}
-              >
-                <img
-                  src={topImage}
-                  alt="Modern office environment"
-                  className="h-full w-full object-cover object-center"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-300/15 via-transparent to-slate-300/20" />
-              </motion.div>
-              <div
-                className={`pointer-events-none absolute left-0 top-0 h-full w-[54%] bg-gradient-to-r ${
-                  theme === "dark"
-                    ? "from-[#0d1b2a] via-[#0d1b2a]/75 to-transparent"
-                    : "from-[#f7fbff] via-[#f7fbff]/80 to-transparent"
-                }`}
-              />
-            </div>
-          </div>
         </div>
       </section>
 
