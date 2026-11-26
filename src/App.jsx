@@ -949,6 +949,7 @@ export default function ApexGlobalLandingPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="relative h-[360px] w-full overflow-hidden rounded-[2.25rem] border border-white/15 shadow-[0_40px_90px_-45px_rgba(15,23,42,0.55)] sm:h-[460px] lg:h-[clamp(480px,65svh,760px)]"
+                style={{
                   WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 24%, black 100%)",
                   maskImage: "linear-gradient(to right, transparent 0%, black 24%, black 100%)",
                 }}
